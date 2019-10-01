@@ -1,17 +1,27 @@
 require 'sinatra'
 
 class Battle < Sinatra::Base
+
+  enable :sessions
+
   get '/test' do
     erb :infrastructure_test
   end
-  
+
   get '/' do
     erb :players
   end
 
-  post '/menu' do
-    @player1 = params[:player1]
-    @player2 = params[:player2]
+  get '/menu' do
+    p session
+    @player1 = session[:params][:player1]
+    @player2 = session[:params][:player2]
     erb :menu
   end
+
+  post '/names' do
+    session[:params] = params
+    redirect "/menu"
+  end
+
 end

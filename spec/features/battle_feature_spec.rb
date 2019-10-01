@@ -13,7 +13,6 @@ feature 'entering names' do
     fill_in "player1", with: name1
     fill_in "player2", with: name2
     click_button("Battle!")
-    expect(page).to have_content("Player 1: #{name1}")
-    expect(page).to have_content("Player 2: #{name2}")
+    expect(page).to have_content("Player 1: #{name1}\nPlayer 2: #{name2}")
   end
 end
