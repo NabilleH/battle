@@ -16,3 +16,13 @@ feature 'entering names' do
     expect(page).to have_content("Player 1: #{name1}\nPlayer 2: #{name2}")
   end
 end
+
+feature 'View hit points' do
+  scenario 'see Player 2 hit points' do
+    visit('/')
+    fill_in :player1, with: 'Yaz'
+    fill_in :player2, with: 'Nabs'
+    click_button 'Battle!'
+    expect(page).to have_content 'Nabs: 60HP'
+  end
+end

@@ -12,16 +12,16 @@ class Battle < Sinatra::Base
     erb :players
   end
 
-  get '/menu' do
+  get '/Play' do
     p session
     @player1 = session[:params][:player1]
     @player2 = session[:params][:player2]
-    erb :menu
+    erb :Play
   end
 
   post '/names' do
     session[:params] = params
-    redirect "/menu"
+    redirect "/Play"
   end
 
 end
