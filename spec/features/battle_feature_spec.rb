@@ -7,22 +7,14 @@ end
 
 feature 'entering names' do
   scenario 'should dispaly the player names form' do
-    visit('/')
-    name1 = "Kevin"
-    name2 = "Nabille"
-    fill_in "player1", with: name1
-    fill_in "player2", with: name2
-    click_button("Battle!")
-    expect(page).to have_content("Player 1: #{name1}\nPlayer 2: #{name2}")
+    sign_in_and_play
+    expect(page).to have_content("Player 1: Yaz\nPlayer 2: Nabs")
   end
 end
 
 feature 'View hit points' do
   scenario 'see Player 2 hit points' do
-    visit('/')
-    fill_in :player1, with: 'Yaz'
-    fill_in :player2, with: 'Nabs'
-    click_button 'Battle!'
+    sign_in_and_play
     expect(page).to have_content 'Nabs: 60HP'
   end
 end
